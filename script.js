@@ -44,10 +44,10 @@ function playRound(computerChoice, playerChoice) {
     return ("You Lose! Paper beats rock.");
   }
   else if (computerChoice == "paper" && playerChoice == "scissors") {
-    return ("You WOn! Scissors beats paper.");
+    return ("You Won! Scissors beats paper.");
   }
   else if (computerChoice == "scissors" && playerChoice == "rock") {
-    return ("You WOn! Rock beats scissors.");
+    return ("You Won! Rock beats scissors.");
   }
   else if (computerChoice == "scissors" && playerChoice == "paper") {
     return ("You Lose! Scissors beats paper.");
@@ -56,4 +56,32 @@ function playRound(computerChoice, playerChoice) {
   else return ("You did not chose one of the three options, please try again");
 }
 
-console.log(playRound(computerChoice, playerChoice));
+//console.log(playRound(computerChoice, playerChoice));
+
+
+//start the game
+function game() {
+  let scorePlayer = 0;
+  let scoreComputer = 0;
+  console.log("Welcome")
+  for (let i = 0; i < 6; i++) {
+     const playerSelection = getComputerChoice();
+     const computerSelection = getPlayerChoice();
+     console.log(playRound(playerSelection, computerSelection));
+     console.log("---------------------");
+     if(playRound(playerSelection, computerSelection) == "You Won! Paper beats rock." || "You Won! Scissors beats paper." || "You Won! Rock beats scissors.") {
+      scorePlayer++;
+     } else if(playRound(playerSelection, computerSelection) == "You Lose! Rock beats Scissors." || "You Lose! Paper beats rock." || "You Lose! Scissors beats paper.") {
+      scoreComputer++;
+     }}
+  console.log("Games Over")
+  if(scorePlayer > scoreComputer ) {
+    console.log("Great Job, You Won")
+  }
+  else if (scoreComputer > scorePlayer) {
+    console.log("You lost the entire game")
+  }
+  else console.log("it's a tie")
+}
+
+game();
